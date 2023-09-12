@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
+
 # Create your models here.
 
 
@@ -26,14 +27,26 @@ class UserManager(BaseUserManager):
             raise ValueError('Superuser must have is_superuser=True.')
         return self.create_user(email, password, **extra_fields)
 
-from ..blog.models import Food
+
 
 class User(AbstractUser):
+    username = None
     first_name = models.CharField('Имя',max_length=70)
     last_name = models.CharField('Фамилия', max_length=70)
     avatar = models.ImageField('Фото',upload_to='media/',null=True,blank=True)
-    email = models.EmailField('Email',unique=True)
+    email = models.EmailField('Электронная почта',unique=True)
     created = models.DateTimeField('Дата создания',auto_now_add=True)
-    favorite_food = models.ManyToManyField(Food,verbose_name='Любимые блюда',
-                                           related_name='favorite_food')
-    object=UserManager()
+    # favorite_food = models.ManyToManyField(Food,verbose_name='Любимые блюда',
+    #                                        related_name='favorite_food',blank=True)
+
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
+
+    object = UserManager()
+
+    class Meta:
+        verbose_name = 'Юзер'
+        verbose_name_plural = 'Юзеры'
+
+    def __str__(self):
+        return self.email

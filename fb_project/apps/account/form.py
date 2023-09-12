@@ -14,7 +14,7 @@ class LoginForm(forms.Form):
                                           'autocomplete':'off'}))
 
 class UserRegisterForm(UserCreationForm):
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
     class Meta:
@@ -24,7 +24,3 @@ class UserRegisterForm(UserCreationForm):
             'last_name',
             'email'
         ]
-
-
-
-

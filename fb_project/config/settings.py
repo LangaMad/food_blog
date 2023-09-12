@@ -75,14 +75,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 AUTH_USER_MODEL = "account.User"
+
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':  'food_blog',
-        'USER': 'food_user',
+        'NAME':  'food_blog2',
+        'USER': 'food_user2',
         'PASSWORD': 'qwerty123',
         'HOST': '127.0.0.1',
         'PORT': '5432'
