@@ -14,6 +14,7 @@ class UserManager(BaseUserManager):
         user.set_password(password)
         user.save()
         return user
+
     def create_superuser(self, email, password, **extra_fields):
         """
         Create and save a SuperUser with the given email and password.
