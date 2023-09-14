@@ -45,13 +45,19 @@
                 <div class="col-7 col-sm-6">
                     <div class="signup-search-area d-flex align-items-center justify-content-end">
 
-
+                                {% if not request.user.is_authenticated %}
                             <div class="login" style="z-index:5;">
                                 <a href="{% url 'sign_in' %}">Войти</a>
                             </div>
                             <div class="register" style="z-index:5;">
                                 <a href="{% url 'register' %}">Регистрация</a>
                             </div>
+                            {% else %}
+                            <div class="register" style="z-index:5;">
+                                <a href="{% url 'logout' %}">Выйти</a>
+                            </div>
+                                {% endif %}
+
 
                         <!-- Search Button Area -->
                         <div class="search_button">

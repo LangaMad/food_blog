@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.template.context_processors import request
 from django.urls import reverse_lazy
 from django.views.generic import FormView,CreateView,TemplateView
 from django.contrib.auth import login,authenticate,logout
@@ -34,6 +35,10 @@ class UserRegisterView(CreateView):
     success_url = reverse_lazy('index')
 
 
+def UserLogout(request):
+    if request.user.is_authenticated:
+        logout(request)
+        return redirect('index')
 
 
 
