@@ -8,8 +8,6 @@ from .form import LoginForm,UserRegisterForm
 # Create your views here.
 
 
-class IndexView(TemplateView):
-    template_name = 'index.html'
 
 class LoginView(FormView):
     template_name = 'login.html'
@@ -39,6 +37,9 @@ def UserLogout(request):
     if request.user.is_authenticated:
         logout(request)
         return redirect('index')
+
+
+
 
 
 

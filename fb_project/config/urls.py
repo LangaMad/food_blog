@@ -19,8 +19,9 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('apps.account.urls')),
-    path('accounts/',include('apps.account.urls'))
+    path('', include('apps.blog.urls')),
+    path('accounts/',include('apps.account.urls')),
+    path('posts/',include('apps.blog.urls'))
 ]
 
 from django.conf import settings
