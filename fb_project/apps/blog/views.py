@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView,ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from .models import *
 
 
@@ -8,7 +8,7 @@ class IndexView(TemplateView):
 
 
 class CategoryListView(ListView):
-    template_name = 'category_list'
+    template_name = 'category_list.html'
     model = Category
     queryset = Category.objects.all()
 
@@ -23,8 +23,37 @@ class CategoryListView(ListView):
 
 
 class PostListView(ListView):
-    template_name = 'post_list'
+    template_name = 'post_list.html'
     model = Post
     queryset = Post.objects.filter(is_draft=False)
+    # context_object_name = 'posts'
+
+
+class PostDetailView(DetailView):
+    template_name = 'post_detail.html'
+    model = Post
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        lastest_post = Post.odjects.filter(is_draft=False)
+        if len(lastest_post) < 5:
+            context['lastest_post'] = lastest_post
+        else:
+            context['lastest_post'] = lastest_post[:5]
+
+        context['categories'] = Category.objects.all()
+
+        return context
+
+
+
+
+
+
+
+
+
+
+
 
 
