@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import truncatechars
 from ..account.models import User
 # Create your models here.
 
@@ -61,3 +62,7 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def short_text(self):
+        return truncatechars(self.text,20)

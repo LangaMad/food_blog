@@ -13,6 +13,7 @@ class CategoryListView(ListView):
     queryset = Category.objects.all()
 
 
+
 # def get_categories(request):
 #     categories = Category.objects.all()
 #     context = {
@@ -33,9 +34,10 @@ class PostDetailView(DetailView):
     template_name = 'post_detail.html'
     model = Post
 
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        lastest_post = Post.odjects.filter(is_draft=False)
+        lastest_post = Post.objects.filter(is_draft=False)
         if len(lastest_post) < 5:
             context['lastest_post'] = lastest_post
         else:
@@ -44,16 +46,3 @@ class PostDetailView(DetailView):
         context['categories'] = Category.objects.all()
 
         return context
-
-
-
-
-
-
-
-
-
-
-
-
-

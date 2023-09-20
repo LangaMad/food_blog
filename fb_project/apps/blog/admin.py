@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Food,Comment,Post,Category
+
 # Register your models here.
 @admin.register(Food)
 class UserAdmin(admin.ModelAdmin):
@@ -36,13 +37,16 @@ class UserAdmin(admin.ModelAdmin):
     ]
 
 
+
+
 @admin.register(Post)
 class UserAdmin(admin.ModelAdmin):
     list_display = [
         'id',
         'author',
         'title',
-        'text',
+        'short_text',
+        # 'text',
         'created',
         'updated',
         'photo',
