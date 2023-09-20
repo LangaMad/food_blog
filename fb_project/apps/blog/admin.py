@@ -35,6 +35,7 @@ class UserAdmin(admin.ModelAdmin):
         'slug',
         'icon',
     ]
+    prepopulated_fields = {'slug': ('name',)}
 
 
 
@@ -53,3 +54,4 @@ class UserAdmin(admin.ModelAdmin):
         'is_draft',
         'category',
     ]
+
