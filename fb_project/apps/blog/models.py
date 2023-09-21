@@ -66,3 +66,8 @@ class Post(models.Model):
     @property
     def short_text(self):
         return truncatechars(self.text,20)
+
+
+
+
+
