@@ -70,6 +70,7 @@ class UserAdmin(admin.ModelAdmin):
 
     ]
     form = PostAdminForm
+
     def get_html_photo(self, object_list):
         if object_list.photo:
             return mark_safe(f"<img src='{object_list.photo.url}' width='50'>")
