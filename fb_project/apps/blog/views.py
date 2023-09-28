@@ -72,8 +72,17 @@ class PostDetailView(DetailView):
         return context
 
 
-class ProfileView(TemplateView):
+class ProfileView(DetailView):
     template_name = 'profile.html'
+    model = Post
+    queryset = Post.objects.all()
+
+
+
+
+
+
+
 
 
 
